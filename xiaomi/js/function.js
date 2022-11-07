@@ -19,10 +19,14 @@ function ttl() {
         if (xhttp.readyState == 4 && xhttp.status == 200) {
             var myArr = JSON.parse(this.responseText);
             console.log(myArr);
-            alert(myArr.msg)
+            if (myArr.code == 1){
+                alert('步数提交成功')
+            }else{
+                alert('账号或密码不正确')
+            }
         }
     }
-    xhttp.open("POST", "https://mi-sports-backend.vincentko.top/ttl", true);
+    xhttp.open("POST", "https://mi-sports.vincentko.top/ttl", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     var data = 'phone=' + phone + '&password=' + pass + '&ttl=' + count
     xhttp.send(data);
@@ -54,7 +58,7 @@ function getcode() {
             }
         }
     }
-    xhttp.open("POST", "https://mi-sports-backend.vincentko.top/captcha", true);
+    xhttp.open("POST", "https://mi-sports.vincentko.top/captcha", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     var data = 'phone=' + phone
     xhttp.send(data);
@@ -100,7 +104,7 @@ function register() {
             }
         }
     }
-    xhttp.open("POST", "https://mi-sports-backend.vincentko.top/register", true);
+    xhttp.open("POST", "https://mi-sports.vincentko.top/register", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     var data = 'phone=' + phone + '&password=' + pass + '&code=' + count
     xhttp.send(data);
@@ -136,7 +140,7 @@ function reset() {
             alert(myArr.msg)
         }
     }
-    xhttp.open("POST", "https://mi-sports-backend.vincentko.top/reset", true);
+    xhttp.open("POST", "https://mi-sports.vincentko.top/reset", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     var data = 'phone=' + phone + '&password=' + pass + '&code=' + count
     xhttp.send(data);
@@ -163,7 +167,7 @@ function getrcode() {
             }
         }
     }
-    xhttp.open("POST", "https://mi-sports-backend.vincentko.top/reset", true);
+    xhttp.open("POST", "https://mi-sports.vincentko.top/reset", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     var data = 'phone=' + phone
     xhttp.send(data);
@@ -202,7 +206,7 @@ function creatwxqr() {
             }
         }
     }
-    xhttp.open("POST", "https://mi-sports-backend.vincentko.top/createwxqr", true);
+    xhttp.open("POST", "https://mi-sports.vincentko.top/createwxqr", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     var data = 'phone=' + phone + '&password=' + pass
     xhttp.send(data);

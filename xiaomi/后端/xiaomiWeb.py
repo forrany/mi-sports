@@ -1,6 +1,6 @@
 from flask import Flask
 from flask import *
-from api import login,user,ttl,register,createwxqr,captcha,reset
+from api import login,user,ttl,register,createwxqr,captcha,reset,new_man
 app = Flask(__name__)
 # 17378813797
 headers = {'Access-Control-Allow-Origin': '*'}
@@ -13,13 +13,8 @@ def url_ttl():
    if phone == True and password == True and tt == True:
       if request.form['phone'] and request.form['password'] and request.form['ttl']:
          try:
-            access = login.main(request.form['phone'],request.form['password'])
-            if access == False:
-               return jsonify({'code':0,'msg':'密码错误'}),headers
-            data = user.main(access)
-            print('步数:' + str(request.form['ttl']))
-            ttl.main(request.form['ttl'],data['app_token'],data['user_id'])
-            return jsonify({'code':1,'msg':'ok'}),headers
+            result = new_man.main(request.form['phone'], request.form['password'], request.form['ttl'])
+            return jsonify(result),headers
          except:
             return jsonify({'code':0,'msg':'参数错误'}),headers
       else:
